@@ -85,7 +85,7 @@ uv pip install -e ".[dev]"
 analyst run data.csv
 
 # Launch the interactive web dashboard
-analyst web
+analyst serve
 ```
 
 ## ⚙️ Configuration
