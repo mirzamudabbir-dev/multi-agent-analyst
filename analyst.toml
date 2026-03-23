@@ -1,0 +1,23 @@
+# Multi-Agent Analyst Configuration
+# Override any defaults below. See docs for all options.
+
+[cleaning]
+drop_duplicates = true
+normalize_columns = true
+numeric_fill_strategy = "median"     # mean | median | zero | drop
+categorical_fill_strategy = "mode"   # mode | unknown | drop
+
+[eda]
+correlation_method = "pearson"       # pearson | spearman
+outlier_method = "iqr"              # iqr | zscore
+outlier_threshold = 1.5
+
+[visualization]
+format = "png"                       # png | html | both
+max_categories = 20
+figsize = [10, 6]
+style = "seaborn-v0_8-darkgrid"
+
+[reporting]
+format = "markdown"                  # markdown | html | both
+include_charts = true
