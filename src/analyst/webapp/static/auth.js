@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 loginBtn.textContent = "Authenticating...";
-                const res = await fetch("/api/login", {
+                const res = await fetch("https://multi-agent-analyst.onrender.com/api/login", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({username: user, password: pass})
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 registerBtn.textContent = "Processing...";
-                const res = await fetch("/api/register", {
+                const res = await fetch("https://multi-agent-analyst.onrender.com/api/register", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({username: user, password: pass})
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 saveKeyBtn.textContent = "Encrypting...";
-                const res = await fetch("/api/set-key", {
+                const res = await fetch("https://multi-agent-analyst.onrender.com/api/set-key", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mode === "profile") formData.append("only", "ingestion,profiling");
 
         try {
-            const res = await fetch(`/api/upload?mode=${mode}`, {
+            const res = await fetch(`https://multi-agent-analyst.onrender.com/api/upload?mode=${mode}`, {
                 method: "POST",
                 headers: getHeaders(),
                 body: formData
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         queryResult.innerHTML = "<em style='color: #94A3B8; font-size: 12px; font-family: var(--font-mono);'>Interrogating data model...</em>";
 
         try {
-            const res = await fetch(`/api/query/${currentRunId}`, {
+            const res = await fetch(`https://multi-agent-analyst.onrender.com/api/query/${currentRunId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         downloadPdfBtn.disabled = true;
 
         try {
-            const res = await fetch(`/api/download-pdf/${currentRunId}`, {
+            const res = await fetch(`https://multi-agent-analyst.onrender.com/api/download-pdf/${currentRunId}`, {
                 headers: getHeaders()
             });
             if (res.ok) {
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function startSSEListener(mode) {
         if (eventSource) eventSource.close();
         // SSE doesn't support headers natively, so we pass token in query param
-        eventSource = new EventSource(`/api/stream?token=${authToken}`);
+        eventSource = new EventSource(`https://multi-agent-analyst.onrender.com/api/stream?token=${authToken}`);
         
         eventSource.onmessage = (e) => {
             const data = JSON.parse(e.data);
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!currentRunId) return;
 
         try {
-            const res = await fetch(`/api/results/${currentRunId}`, {
+            const res = await fetch(`https://multi-agent-analyst.onrender.com/api/results/${currentRunId}`, {
                 headers: getHeaders()
             });
             const data = await res.json();
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     data.charts.forEach(chartName => {
                         const img = document.createElement("img");
-                        img.src = `/output/${currentRunId}/charts/${chartName}`;
+                        img.src = `https://multi-agent-analyst.onrender.com/output/${currentRunId}/charts/${chartName}`;
                         img.style.width = "100%";
                         img.style.height = "auto";
                         img.style.borderRadius = "8px";
