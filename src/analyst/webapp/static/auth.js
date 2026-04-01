@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Utilities
     const checkAuthAndRedirect = () => {
-        if (authToken && window.location.pathname !== "/app/keygen.html") {
-            window.location.href = "/app/dashboard.html";
+        if (authToken && !window.location.pathname.includes("keygen.html")) {
+            window.location.href = "./dashboard.html";
         }
     };
 
-    if (window.location.pathname === "/app/login.html" || window.location.pathname === "/app/register.html") {
+    if (window.location.pathname.includes("login.html") || window.location.pathname.includes("register.html") || window.location.pathname === "/") {
         checkAuthAndRedirect();
     }
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (res.ok) {
                     authToken = data.token;
                     localStorage.setItem("analyst_token", authToken);
-                    window.location.href = "/app/keygen.html"; // Enforce keygen on every login
+                    window.location.href = "./keygen.html"; // Enforce keygen on every login
                 } else {
                     errorDiv.textContent = data.detail || "Login failed";
                     errorDiv.style.display = "block";
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = await res.json();
                 if (res.ok) {
                     // Force them to login now
-                    window.location.href = "/app/login.html?registered=true";
+                    window.location.href = "./login.html?registered=true";
                 } else {
                     errorDiv.textContent = data.detail || "Registration failed";
                     errorDiv.style.display = "block";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Registration Success Message on Login Page
-    if (window.location.pathname === "/app/login.html" && window.location.search.includes("registered=true")) {
+    if (window.location.pathname.includes("login.html") && window.location.search.includes("registered=true")) {
         const loginError = document.getElementById("login-error");
         if (loginError) {
             loginError.textContent = "Account created successfully. Please log in.";
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify({api_key: key})
                 });
                 if (res.ok) {
-                    window.location.href = "/app/dashboard.html";
+                    window.location.href = "./dashboard.html";
                 } else {
                     const data = await res.json();
                     errorDiv.textContent = data.detail || "Failed to save key";

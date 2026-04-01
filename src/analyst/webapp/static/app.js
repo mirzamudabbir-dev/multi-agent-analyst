@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let authToken = localStorage.getItem("analyst_token");
 
     if (!authToken) {
-        window.location.href = "/app/login.html";
+        window.location.href = "./login.html";
         return;
     }
 
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 startSSEListener(mode);
             } else {
                 if (res.status === 400 && data.detail.includes("API Key")) {
-                    window.location.href = "/app/keygen.html";
+                    window.location.href = "./keygen.html";
                 }
                 throw new Error(data.detail || "Upload failed");
             }
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Logout error", err);
             }
             localStorage.removeItem("analyst_token");
-            window.location.href = "/app/login.html";
+            window.location.href = "./login.html";
         });
     }
 
