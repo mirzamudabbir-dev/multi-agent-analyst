@@ -15,7 +15,7 @@ from analyst.models import AgentResult
 class BaseReasoningAgent(BaseAgent):
     """A generic agent that offloads decision-making to Gemini strictly returning a Pydantic schema."""
 
-    def generate_structured_response(self, prompt: str, schema: Type[BaseModel]) -> BaseModel | None:
+    def generate_structured_response(self, prompt: str, schema: Type[BaseModel], api_key: str | None = None) -> BaseModel | None:
         """Call Gemini and return the structured JSON strictly mapped to the provided schema."""
         try:
             from google import genai
@@ -24,7 +24,6 @@ class BaseReasoningAgent(BaseAgent):
 
         import time
         import re
-        api_key = os.environ.get("GEMINI_API_KEY")
         if not api_key:
             return None
 

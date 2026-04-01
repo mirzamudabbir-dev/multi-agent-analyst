@@ -33,7 +33,7 @@ The user has provided a goal: '{goal}'
 Please interpret this goal and break it down into a structured analytical plan.
 Identify the key metrics, dimensions/slices to look at, and potential hypotheses to test.
 """
-        response = self.generate_structured_response(prompt, InterpretationSchema)
+        response = self.generate_structured_response(prompt, InterpretationSchema, api_key=state.api_key)
         
         if not response:
             return state, AgentResult(

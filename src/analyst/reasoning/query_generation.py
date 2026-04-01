@@ -43,7 +43,7 @@ Dataset Profile: {json.dumps(context, default=str)}
 Do not execute code. Merely output the logical 'filters', 'groupby_columns', and 'aggregations' mapped to columns.
 Valid aggregations are 'mean', 'sum', 'count', 'max', 'min'.
 """
-        response = self.generate_structured_response(prompt, QueryGenerationSchema)
+        response = self.generate_structured_response(prompt, QueryGenerationSchema, api_key=state.api_key)
         
         if not response:
             return state, AgentResult(

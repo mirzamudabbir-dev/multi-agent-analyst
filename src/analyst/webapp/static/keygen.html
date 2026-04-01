@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Agent Analyst | Configuration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Geist+Mono:wght@100..900&family=Inter:wght@300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/app/style.css" />
+  </head>
+  <body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+      <div class="nav-logo" style="cursor: pointer;" onclick="window.location.href='/app/'">ANALYST_OS//v5</div>
+    </nav>
+
+    <main class="fluid-container" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div class="metadata-bar" style="margin-bottom: 2rem; width: 100%; max-width: 400px; justify-content: space-between;">
+        <div>SYSTEM <br><span>CONFIGURATION</span></div>
+        <div>STATUS <br><span style="color: #ffff55;">MISSING_API_KEY</span></div>
+      </div>
+
+      <div class="auth-card" style="display: block; position: relative; z-index: 10; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <h2 class="auth-title">Configuration</h2>
+        <div id="keygen-error" class="error-toast"></div>
+        <p class="mono-label text-sm mb-16" style="color: rgba(255,255,255,0.6); text-align: center;">
+          Your Gemini API Key is required for analysis. It will be stored with AES-256 encryption.
+        </p>
+        <div class="auth-input-group" style="width: 100%; text-align: left;">
+          <label style="font-size: 12px; margin-bottom: 0.75rem;">Gemini API Key</label>
+          <input type="password" id="api-key-input" class="mono-input" placeholder="AIzaSy..." style="width: 100%; padding: 18px 24px; font-size: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: white;" />
+        </div>
+        <button id="save-key-btn" class="silver-btn" style="width: 100%; margin-top: 1rem;">Authorize System</button>
+      </div>
+    </main>
+
+    <script src="/app/auth.js"></script>
+  </body>
+</html>

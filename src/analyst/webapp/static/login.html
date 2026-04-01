@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Agent Analyst | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Geist+Mono:wght@100..900&family=Inter:wght@300..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/app/style.css" />
+  </head>
+  <body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+      <div class="nav-logo" style="cursor: pointer;" onclick="window.location.href='/app/'">ANALYST_OS//v5</div>
+    </nav>
+
+    <main class="fluid-container" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+      
+      <h1 class="hero-title" style="margin-bottom: 1rem; font-size: clamp(48px, 10vw, 100px); color: var(--pure-white);">
+        Sign In
+      </h1>
+
+      <div class="metadata-bar" style="margin-bottom: 4rem; width: 100%; max-width: 450px; justify-content: space-between; gap: 0;">
+        <div style="text-align: left;">SYSTEM <br><span>AUTHENTICATION</span></div>
+        <div style="text-align: right;">STATUS <br><span style="color: #ff5555;">PENDING_LOGIN</span></div>
+      </div>
+
+      <div class="capture-form" style="width: 100%; max-width: 450px; margin: 0 auto; gap: 2rem;">
+        <div id="login-error" class="error-toast" style="width: 100%;"></div>
+        
+        <div class="auth-input-group" style="width: 100%; text-align: left;">
+          <label style="font-size: 12px; margin-bottom: 0.75rem;">Username</label>
+          <input type="text" id="login-user" class="mono-input" placeholder="anon_user" style="width: 100%; padding: 18px 24px; font-size: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: white;" />
+        </div>
+        
+        <div class="auth-input-group" style="width: 100%; text-align: left;">
+          <label style="font-size: 12px; margin-bottom: 0.75rem;">Password</label>
+          <input type="password" id="login-pass" class="mono-input" placeholder="••••••••" style="width: 100%; padding: 18px 24px; font-size: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: white;" />
+        </div>
+        
+        <button id="login-btn" class="silver-btn" style="width: 100%; padding: 18px; font-size: 16px;">Initialize Session</button>
+        
+        <div class="auth-footer" style="margin-top: 1rem; font-size: 13px;">
+          New here? <a href="/app/register.html" class="auth-link" style="font-size: 13px; font-weight: bold;">Register Identity</a>
+        </div>
+      </div>
+
+    </main>
+
+    <script src="/app/auth.js"></script>
+  </body>
+</html>

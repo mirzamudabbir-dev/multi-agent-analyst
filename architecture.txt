@@ -1,0 +1,32 @@
+graph TD
+    CLI[CLI Interface] --> ORCH[Orchestrator]
+    WEB[Web UI] --> ORCH
+    ORCH --> STATE[(Shared Analysis State)]
+    
+    subgraph "Specialized Agents"
+        INGEST[Ingestion Agent]
+        PROF[Profiling Agent]
+        CLEAN[Cleaning Agent]
+        EDA[EDA Agent]
+        VIS[Visualization Agent]
+        REPORT[Reporting Agent]
+    end
+    
+    subgraph "Reasoning Layer (Google Gemini)"
+        PROB[Problem Interpreter]
+        DISCO[Data Discovery]
+        PLAN[Visual Planning]
+        SENSE[Insight Synthesis]
+    end
+    
+    ORCH <--> INGEST
+    ORCH <--> PROF
+    ORCH <--> CLEAN
+    ORCH <--> EDA
+    ORCH <--> VIS
+    ORCH <--> REPORT
+    
+    EDA <--> SENSE
+    VIS <--> PLAN
+    PROB --> SENSE
+    DISCO --> PLAN

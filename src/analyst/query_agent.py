@@ -15,9 +15,9 @@ def ask_question(state: AnalysisState, question: str) -> str:
     except ImportError:
         return "Error: google-genai package is not installed."
 
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = state.api_key
     if not api_key:
-        return "Error: GEMINI_API_KEY environment variable is not set. Please run `export GEMINI_API_KEY='your-key'`"
+        return "Error: No API key provided for your session. Please enter your Gemini API key in the register/login portal."
 
     client = genai.Client(api_key=api_key)
 

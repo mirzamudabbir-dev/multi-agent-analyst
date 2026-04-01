@@ -36,7 +36,6 @@ PIPELINE = [
     # Phase 3b: Final Execution (local Python)
     "visualization_execution",
     "reporting_execution",
-    "excel_export",
 ]
 
 DIGEST_CHECKPOINT = "eda"  # Generate + save digest after this agent
@@ -123,7 +122,7 @@ class LLMOrchestrator:
         self.history: list[AgentResult] = []
         self._cache: dict[str, dict] = {}
         self.available_agents = list(get_all_agents().keys())
-        self.api_key = os.environ.get("GEMINI_API_KEY")
+        self.api_key = self.state.api_key
 
     def run(self) -> AnalysisState:
         """Main loop: plan → execute → loop until complete."""

@@ -38,7 +38,7 @@ Goal: '{goal}'
 2. Formulate a step-by-step plan.
 3. Identify what the primary entities represent.
 """
-        response = self.generate_structured_response(prompt, StrategicPlanSchema)
+        response = self.generate_structured_response(prompt, StrategicPlanSchema, api_key=state.api_key)
         if not response:
             return state, AgentResult(agent_name=self.name, status="error", reasoning="LLM quota/error.")
 
@@ -80,7 +80,7 @@ Plan Metrics: {plan_metrics}
 1. Design the logical query operations (filters/groupbys) to answer the plan.
 2. Interpret the computed statistics into trends and anomalies.
 """
-        response = self.generate_structured_response(prompt, DataReasoningSchema)
+        response = self.generate_structured_response(prompt, DataReasoningSchema, api_key=state.api_key)
         if not response:
             return state, AgentResult(agent_name=self.name, status="error", reasoning="LLM quota/error.")
 
@@ -124,7 +124,7 @@ Based on the found trends and anomalies, plan exactly 3-4 charts and write the f
 Trends: {trends}
 Anomalies: {anomalies}
 """
-        response = self.generate_structured_response(prompt, SynthesisSchema)
+        response = self.generate_structured_response(prompt, SynthesisSchema, api_key=state.api_key)
         if not response:
             return state, AgentResult(agent_name=self.name, status="error", reasoning="LLM quota/error.")
 

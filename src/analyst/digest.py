@@ -85,8 +85,11 @@ def _serialize_profile(profile: list[ColumnProfile]) -> list[dict]:
             "null_pct": p.null_pct,
             "unique_count": p.unique_count,
             "mean": p.mean,
+            "median": p.median,
+            "std": p.std,
             "min": p.min,
             "max": p.max,
+            "top_values": p.top_values,
         }
         for p in profile
     ]
@@ -177,8 +180,11 @@ def load_cache(file_path: Path) -> AnalysisState | None:
             null_pct=p.get("null_pct", 0.0),
             unique_count=p["unique_count"],
             mean=p.get("mean"),
+            median=p.get("median"),
+            std=p.get("std"),
             min=p.get("min"),
             max=p.get("max"),
+            top_values=p.get("top_values"),
         )
         for p in cache_data.get("profile", [])
     ]

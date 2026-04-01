@@ -78,4 +78,4 @@ class IngestionAgent(BaseAgent):
 
         headers = [str(h) if h is not None else f"column_{i}" for i, h in enumerate(data[0])]
         rows = data[1:]
-        return pl.DataFrame(dict(zip(headers, zip(*rows))), orient="col")
+        return pl.DataFrame(dict(zip(headers, zip(*rows))), orient="col", strict=False)

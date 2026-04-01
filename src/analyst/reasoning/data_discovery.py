@@ -46,7 +46,7 @@ Dataset Profile: {json.dumps(context, default=str)}
 Identify what the primary entities represents (e.g. Sales, Users, Logs).
 Note any glaring data quality warnings purely based on null counts or extreme uniqueness vs types.
 """
-        response = self.generate_structured_response(prompt, DiscoverySchema)
+        response = self.generate_structured_response(prompt, DiscoverySchema, api_key=state.api_key)
         
         if not response:
             return state, AgentResult(

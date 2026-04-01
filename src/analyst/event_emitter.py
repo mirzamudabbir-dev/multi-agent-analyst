@@ -13,6 +13,13 @@ class EventEmitter:
             self._listeners[event_name] = []
         self._listeners[event_name].append(callback)
 
+    def off(self, event_name: str, callback: Callable[..., Any]) -> None:
+        if event_name in self._listeners:
+            try:
+                self._listeners[event_name].remove(callback)
+            except ValueError:
+                pass
+
     def emit(self, event_name: str, *args, **kwargs) -> None:
         for listener in self._listeners.get(event_name, []):
             try:

@@ -36,7 +36,7 @@ Context gathered by previous agents:
 
 Generate an insightful, well-formatted Markdown report synthesizing these findings for a business stakeholder.
 """
-        response = self.generate_structured_response(prompt, ReportSchema)
+        response = self.generate_structured_response(prompt, ReportSchema, api_key=state.api_key)
 
         if not response:
             return state, AgentResult(

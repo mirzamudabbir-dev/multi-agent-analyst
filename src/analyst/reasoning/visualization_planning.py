@@ -48,7 +48,7 @@ Constraints:
 - You MUST ensure the 'x' and 'y' column names EXACTLY MATCH the names in the profile.
 - Return ONLY valid column names or empty string "" for y if not needed.
 """
-        response = self.generate_structured_response(prompt, VisSchema)
+        response = self.generate_structured_response(prompt, VisSchema, api_key=state.api_key)
 
         if not response:
             return state, AgentResult(

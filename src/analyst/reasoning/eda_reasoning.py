@@ -45,7 +45,7 @@ Computed Stats: {json.dumps(context, default=str)}
 
 Identify the core trends, any anomalies/outliers, and notable correlations.
 """
-        response = self.generate_structured_response(prompt, EDASchema)
+        response = self.generate_structured_response(prompt, EDASchema, api_key=state.api_key)
         
         if not response:
             return state, AgentResult(

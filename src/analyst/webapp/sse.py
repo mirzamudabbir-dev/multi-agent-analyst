@@ -33,3 +33,6 @@ class SSEStreamer:
         except asyncio.CancelledError:
             # Client disconnected
             pass
+        finally:
+            # UNREGISTER the listener to prevent memory leaks!
+            global_emitter.off("log", self._on_log_event)

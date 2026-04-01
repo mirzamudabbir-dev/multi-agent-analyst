@@ -25,6 +25,7 @@ class AnalysisState:
     # ── Input ──────────────────────────────────────────────
     file_path: Path
     output_dir: Path = field(default_factory=lambda: Path("output"))
+    api_key: str | None = None
 
     # ── Ingestion output ───────────────────────────────────
     raw_df: pl.DataFrame | None = None

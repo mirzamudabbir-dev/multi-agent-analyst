@@ -282,7 +282,7 @@ def profile(
     """[bold info]Quick profile[/bold info] — runs only ingestion + profiling (0 LLM tokens)."""
     from analyst.digest import load_cache, save_cache
     from analyst.agents.ingestion import IngestionAgent
-    from analyst.agents.profiling import ProfilerAgent
+    from analyst.agents.profiling import ProfilingAgent
 
     print_banner("Quick Data Profiling", "Running ingestion and automated data profiling...")
 
@@ -296,7 +296,7 @@ def profile(
         state = AnalysisState(file_path=file, output_dir=output, config=cfg)
         try:
             state, _ = IngestionAgent().execute(state)
-            state, _ = ProfilerAgent().execute(state)
+            state, _ = ProfilingAgent().execute(state)
             save_cache(state)
         except Exception as e:
             console.print(Panel(f"[error]Pipeline Error:[/] {e}", box=box.HEAVY, border_style="red"))
@@ -360,7 +360,7 @@ def query(
         state = AnalysisState(file_path=file, output_dir=output, config=cfg)
         try:
             state, _ = IngestionAgent().execute(state)
-            state, _ = ProfilerAgent().execute(state)
+            state, _ = ProfilingAgent().execute(state)
             state, _ = EDAAgent().execute(state)
             save_cache(state)
         except Exception as e:
